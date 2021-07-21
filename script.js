@@ -1,30 +1,28 @@
 (function () {
-
   async function getConfig() {
     let projectId = 9;
     const scripts = [...document.querySelectorAll("script")];
     const ourScript = scripts.filter((s) =>
-        s.src.match(new RegExp(`?project_id=${projectId}`))
+      s.src.match(new RegExp(`?project_id=${projectId}`))
     )[0];
 
     if (ourScript) {
-        const shopMatch = ourScript.src.match(/shop=(.*)/);
-        if (!shopMatch) return null;
-        const shop = shopMatch[1];
-        const response = await fetch(
-            `https://api.buildwithloco.com/projects/${projectId}/websites/configs?shop=${shop}`
-        );
-        const data = await response.json();
-        return data;
+      const shopMatch = ourScript.src.match(/shop=(.*)/);
+      if (!shopMatch) return null;
+      const shop = shopMatch[1];
+      const response = await fetch(
+        `https://api.buildwithloco.com/projects/${projectId}/websites/configs?shop=${shop}`
+      );
+      const data = await response.json();
+      return data;
     }
     return {};
-}
+  }
 
   getConfig().then((data) => {
     const theme = data.theme;
 
-
-    const formHtml = `
+    const html = `
   <div id="loco">
     <style>
     #loco {
@@ -46,9 +44,6 @@
     wrap.id = "locoTest";
 
     document.body.appendChild(wrap);
-    window.locoDm.innerHTML = formHtml;
+    window.locoTest.innerHTML = html;
   });
-
 })();
-
-
