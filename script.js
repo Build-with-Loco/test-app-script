@@ -3,7 +3,7 @@
     let projectId = 7;
     const scripts = [...document.querySelectorAll("script")];
     const ourScript = scripts.filter((s) =>
-      s.src.match(new RegExp(`?project_id=${projectId}`))
+      s.src.match(new RegExp(`?project_id=7`))
     )[0];
 
     if (ourScript) {
