@@ -1,6 +1,6 @@
 (function () {
   async function getConfig() {
-    let projectId = 7;
+    let projectId = 8;
     const scripts = [...document.querySelectorAll("script")];
     const ourScript = scripts.filter((s) =>
       s.src.match(new RegExp(`\\?project_id=${projectId}`))
